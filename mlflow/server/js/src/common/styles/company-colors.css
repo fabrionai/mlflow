@@ -1,0 +1,555 @@
+:root {
+  /* Brand Grey Palette */
+  --brand-black: #000000;
+  --brand-grey: #313131;
+  --brand-grey-70: #4F4D4E;
+  --brand-grey-40: #9B999A;
+
+  /* Brand Red Palette */
+  --brand-red: #FE161E;
+  --brand-red-50: #FF8A8E;
+  --brand-red-20: #FFD0D2;
+
+  /* Common Colors */
+  --white: #FFFFFF;
+
+  /* Semantic Color Mappings */
+  --primary-color: var(--brand-red);
+  --primary-color-light: var(--brand-red-50);
+  --primary-color-lighter: var(--brand-red-20);
+  
+  --secondary-color: var(--brand-grey);
+  --secondary-color-light: var(--brand-grey-70);
+  --secondary-color-lighter: var(--brand-grey-40);
+  
+  --background-color: var(--white);
+  --text-color: var(--brand-grey);
+  --text-color-light: var(--brand-grey-70);
+  --text-color-lighter: var(--brand-grey-40);
+  
+  /* Border Colors */
+  --border-color: var(--brand-grey-40);
+  --border-color-light: var(--brand-grey-20);
+  
+  /* Hover States */
+  --hover-background: var(--brand-red-20);
+  --hover-text: var(--brand-red);
+  
+/* Focus States */
+--focus-color: var(--brand-red);
+--focus-outline: var(--brand-red-50);
+
+/* Hover States */
+--hover-border: var(--brand-red);
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --background-color: var(--brand-grey);
+  --text-color: var(--white);
+  --text-color-light: var(--brand-grey-40);
+  --text-color-lighter: var(--brand-grey-70);
+  
+  --border-color: var(--brand-grey-70);
+  --border-color-light: var(--brand-grey);
+  
+  --hover-background: var(--brand-grey-70);
+  --hover-text: var(--brand-red-50);
+}
+
+/* ========================================
+   WORKING BUTTON OVERRIDES (CSS SELECTORS)
+   ======================================== */
+
+/* Primary Buttons - Override with Fabrion Red (Both Light and Dark Themes) */
+button[type="primary"],
+button[data-testid*="primary"],
+button[class*="primary"],
+.css-1x8cf4d, /* Common Databricks button class */
+.css-1x8cf4d[type="primary"],
+/* Light theme primary buttons */
+.du-bois-light-btn-primary,
+button[class*="du-bois-light-btn-primary"],
+/* Dark theme primary buttons */
+.du-bois-dark-btn-primary,
+button[class*="du-bois-dark-btn-primary"] {
+  background-color: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--white) !important;
+}
+
+button[type="primary"]:hover,
+button[data-testid*="primary"]:hover,
+button[class*="primary"]:hover,
+.css-1x8cf4d:hover,
+.css-1x8cf4d[type="primary"]:hover,
+/* Light theme primary buttons hover */
+.du-bois-light-btn-primary:hover,
+button[class*="du-bois-light-btn-primary"]:hover,
+/* Dark theme primary buttons hover */
+.du-bois-dark-btn-primary:hover,
+button[class*="du-bois-dark-btn-primary"]:hover {
+  background-color: var(--brand-red-50) !important;
+  border-color: var(--brand-red-50) !important;
+  color: var(--white) !important;
+}
+
+button[type="primary"]:active,
+button[data-testid*="primary"]:active,
+button[class*="primary"]:active,
+.css-1x8cf4d:active,
+.css-1x8cf4d[type="primary"]:active,
+/* Light theme primary buttons active */
+.du-bois-light-btn-primary:active,
+button[class*="du-bois-light-btn-primary"]:active,
+/* Dark theme primary buttons active */
+.du-bois-dark-btn-primary:active,
+button[class*="du-bois-dark-btn-primary"]:active {
+  background-color: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--white) !important;
+}
+
+/* Default Buttons - Override with Fabrion styling */
+button[type="default"],
+button:not([type]),
+button[class*="default"] {
+  background-color: transparent !important;
+  border-color: var(--brand-grey-40) !important;
+  color: var(--brand-grey) !important;
+}
+
+button[type="default"]:hover,
+button:not([type]):hover,
+button[class*="default"]:hover {
+  background-color: var(--brand-grey-40) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--brand-red) !important;
+}
+
+/* Create Model Button specifically */
+.create-model-btn,
+button[data-testid="create-model-button"] {
+  background-color: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--white) !important;
+}
+
+.create-model-btn:hover,
+button[data-testid="create-model-button"]:hover {
+  background-color: var(--brand-red-50) !important;
+  border-color: var(--brand-red-50) !important;
+  color: var(--white) !important;
+}
+
+/* Dark Theme Default Button Overrides */
+[data-theme="dark"] button[type="default"],
+[data-theme="dark"] button:not([type]),
+[data-theme="dark"] button[class*="default"] {
+  background-color: transparent !important;
+  border-color: var(--brand-grey-70) !important;
+  color: var(--white) !important;
+}
+
+[data-theme="dark"] button[type="default"]:hover,
+[data-theme="dark"] button:not([type]):hover,
+[data-theme="dark"] button[class*="default"]:hover {
+  background-color: var(--brand-grey-70) !important;
+  border-color: var(--brand-red-50) !important;
+  color: var(--brand-red-50) !important;
+}
+
+/* Force override for any button with blue background */
+button[style*="background-color: rgb(34, 114, 180)"],
+button[style*="background-color: #2272B4"],
+button[style*="background-color: rgb(66, 153, 224)"],
+button[style*="background-color: #4299E0"] {
+  background-color: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--white) !important;
+}
+
+/* Specific override for ExperimentListView Create button */
+button[componentid="mlflow.experiment_list_view.new_experiment_button"],
+button[data-testid="create-experiment-button"] {
+  background-color: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--white) !important;
+}
+
+button[componentid="mlflow.experiment_list_view.new_experiment_button"]:hover,
+button[data-testid="create-experiment-button"]:hover {
+  background-color: var(--brand-red-50) !important;
+  border-color: var(--brand-red-50) !important;
+  color: var(--white) !important;
+}
+
+/* Override any Emotion CSS class with getButtonEmotionStyles pattern (Both Light and Dark Themes) */
+button[class*="getButtonEmotionStyles"][class*="du-bois-light-btn-primary"],
+button[class*="getButtonEmotionStyles"][class*="du-bois-light-btn-primary"] *,
+button[class*="getButtonEmotionStyles"][class*="du-bois-dark-btn-primary"],
+button[class*="getButtonEmotionStyles"][class*="du-bois-dark-btn-primary"] * {
+  background-color: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: var(--white) !important;
+}
+
+button[class*="getButtonEmotionStyles"][class*="du-bois-light-btn-primary"]:hover,
+button[class*="getButtonEmotionStyles"][class*="du-bois-light-btn-primary"]:hover *,
+button[class*="getButtonEmotionStyles"][class*="du-bois-dark-btn-primary"]:hover,
+button[class*="getButtonEmotionStyles"][class*="du-bois-dark-btn-primary"]:hover * {
+  background-color: var(--brand-red-50) !important;
+  border-color: var(--brand-red-50) !important;
+  color: var(--white) !important;
+}
+
+/* Hamburger Menu Icon Override */
+button[componentid="mlflow_header.toggle_sidebar_button"],
+button[componentid="mlflow_header.toggle_sidebar_button"] svg,
+button[componentid="mlflow_header.toggle_sidebar_button"] path {
+  color: var(--brand-red) !important;
+  fill: var(--brand-red) !important;
+}
+
+button[componentid="mlflow_header.toggle_sidebar_button"]:hover,
+button[componentid="mlflow_header.toggle_sidebar_button"]:hover svg,
+button[componentid="mlflow_header.toggle_sidebar_button"]:hover path {
+  color: var(--brand-red-50) !important;
+  fill: var(--brand-red-50) !important;
+}
+
+/* Utility Classes */
+.bg-brand-grey { background-color: var(--brand-grey); }
+.bg-brand-grey-70 { background-color: var(--brand-grey-70); }
+.bg-brand-grey-40 { background-color: var(--brand-grey-40); }
+
+/* ========================================
+   MODELS PAGE BACKGROUND OVERRIDE (DARK THEME ONLY)
+   ======================================== */
+
+/* Force models page background to use brand-grey in dark theme ONLY */
+.dark-mode [data-testid="ModelListView-container"],
+.dark-mode [data-testid="ModelListView-container"] *,
+.dark-mode .PageWrapper,
+.dark-mode .PageWrapper * {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Target ModelListPageImpl and specific PageContainer class in dark theme ONLY */
+.dark-mode .ModelListPageImpl,
+.dark-mode .ModelListPageImpl *,
+.dark-mode .css-195mjpn-css-PageContainer,
+.dark-mode .css-195mjpn-css-PageContainer * {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Override any specific background colors that might be set in dark theme ONLY */
+.dark-mode div[style*="background-color: #11171C"],
+.dark-mode div[style*="background-color: rgb(17, 23, 28)"] {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Target the specific PageWrapper component that's overriding our background */
+.dark-mode [data-testid="ModelListView-container"] > div,
+.dark-mode [data-testid="ModelListView-container"] > div > div {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Override Databricks PageWrapper background specifically for models page */
+.dark-mode [data-testid="ModelListView-container"] div[style*="background-color"] {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Override specific Emotion-generated ScrollablePageWrapper class for ModelListPageImpl */
+.dark-mode .css-xemq1p-css-ScrollablePageWrapper-ModelListPageImpl {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Override any ScrollablePageWrapper with ModelListPageImpl pattern in dark theme */
+.dark-mode [class*="ScrollablePageWrapper"][class*="ModelListPageImpl"] {
+  background-color: var(--brand-grey) !important;
+}
+
+/* More aggressive overrides for models page - target any element with #11171C background */
+.dark-mode div[style*="background-color: #11171C"],
+.dark-mode div[style*="background-color: rgb(17, 23, 28)"],
+.dark-mode div[style*="background-color: #11171c"],
+.dark-mode div[style*="background-color: rgb(17,23,28)"] {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Target any ScrollablePageWrapper in dark mode that might be on models page */
+.dark-mode [class*="ScrollablePageWrapper"] {
+  background-color: var(--brand-grey) !important;
+}
+
+/* ========================================
+   INPUT FIELD HOVER BORDER OVERRIDES
+   ======================================== */
+
+/* Input field hover border color override */
+input:hover,
+input[type="text"]:hover,
+input[type="search"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+.dark-mode input:hover,
+.dark-mode input[type="text"]:hover,
+.dark-mode input[type="search"]:hover,
+.dark-mode input[type="email"]:hover,
+.dark-mode input[type="password"]:hover {
+  border-color: var(--brand-red) !important;
+}
+
+/* TableFilterInput hover border color override */
+[class*="TableFilterInput"]:hover,
+[class*="TableFilterInput"] input:hover,
+.dark-mode [class*="TableFilterInput"]:hover,
+.dark-mode [class*="TableFilterInput"] input:hover {
+  border-color: var(--brand-red) !important;
+}
+
+/* TableFilterInput focus border color override */
+[class*="TableFilterInput"]:focus,
+[class*="TableFilterInput"] input:focus,
+.dark-mode [class*="TableFilterInput"]:focus,
+.dark-mode [class*="TableFilterInput"] input:focus {
+  border-color: var(--brand-red) !important;
+  outline-color: var(--brand-red) !important;
+}
+
+/* Input field focus border color override */
+input:focus,
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+.dark-mode input:focus,
+.dark-mode input[type="text"]:focus,
+.dark-mode input[type="search"]:focus,
+.dark-mode input[type="email"]:focus,
+.dark-mode input[type="password"]:focus {
+  border-color: var(--brand-red) !important;
+  outline-color: var(--brand-red) !important;
+}
+
+/* Target any input with blue border and override on hover/focus */
+input[style*="border-color: rgb(66, 153, 224)"],
+input[style*="border-color: #4299E0"],
+input[style*="border-color: rgb(34, 114, 180)"],
+input[style*="border-color: #2272B4"] {
+  border-color: var(--brand-grey-40) !important;
+}
+
+input[style*="border-color: rgb(66, 153, 224)"]:hover,
+input[style*="border-color: #4299E0"]:hover,
+input[style*="border-color: rgb(34, 114, 180)"]:hover,
+input[style*="border-color: #2272B4"]:hover,
+input[style*="border-color: rgb(66, 153, 224)"]:focus,
+input[style*="border-color: #4299E0"]:focus,
+input[style*="border-color: rgb(34, 114, 180)"]:focus,
+input[style*="border-color: #2272B4"]:focus {
+  border-color: var(--brand-red) !important;
+}
+
+/* ========================================
+   BORDER COLOR OVERRIDES (#37444F to var(--brand-grey-40))
+   ======================================== */
+
+/* Override #37444F border color to var(--brand-grey-40) */
+*[style*="border-color: #37444F"],
+*[style*="border-color: rgb(55, 68, 79)"],
+*[style*="border-color: #37444f"],
+*[style*="border-color: rgb(55,68,79)"],
+.dark-mode *[style*="border-color: #37444F"],
+.dark-mode *[style*="border-color: rgb(55, 68, 79)"],
+.dark-mode *[style*="border-color: #37444f"],
+.dark-mode *[style*="border-color: rgb(55,68,79)"] {
+  border-color: var(--brand-grey-40) !important;
+}
+
+/* Override #37444F border color in CSS classes */
+.border-color-37444F,
+.border-color-37444f,
+.dark-mode .border-color-37444F,
+.dark-mode .border-color-37444f {
+  border-color: var(--brand-grey-40) !important;
+}
+
+/* Target any element with #37444F border and override */
+div[style*="border-color: #37444F"],
+span[style*="border-color: #37444F"],
+button[style*="border-color: #37444F"],
+input[style*="border-color: #37444F"],
+select[style*="border-color: #37444F"],
+textarea[style*="border-color: #37444F"],
+.dark-mode div[style*="border-color: #37444F"],
+.dark-mode span[style*="border-color: #37444F"],
+.dark-mode button[style*="border-color: #37444F"],
+.dark-mode input[style*="border-color: #37444F"],
+.dark-mode select[style*="border-color: #37444F"],
+.dark-mode textarea[style*="border-color: #37444F"] {
+  border-color: var(--brand-grey-40) !important;
+}
+
+/* ========================================
+   "VIEW ALL" LINKS COLOR OVERRIDE
+   ======================================== */
+
+/* Override "View all" link color for experiments page */
+/* a[href="#/experiments"], .dark-mode a[href="#/experiments"] {
+  color: var(--brand-grey-40) !important;
+} */
+
+/* Override "View all" text color in ExperimentsHomeView for both themes */
+.css-62rlc2-ExperimentsHomeView a[href="#/experiments"],
+[class*="ExperimentsHomeView"] a[href="#/experiments"],
+.dark-mode .css-62rlc2-ExperimentsHomeView a[href="#/experiments"],
+.dark-mode [class*="ExperimentsHomeView"] a[href="#/experiments"] {
+  color: var(--brand-grey-40) !important;
+}
+
+/* Override "Discover News" link color for specific element */
+a[data-component-id="mlflow.home.news.view_more"],
+.dark-mode a[data-component-id="mlflow.home.news.view_more"] {
+  color: var(--brand-grey-40) !important;
+}
+
+/* Override "Discover News" icon color for specific element */
+a[data-component-id="mlflow.home.news.view_more"] svg path,
+.dark-mode a[data-component-id="mlflow.home.news.view_more"] svg path {
+  fill: var(--brand-grey-40) !important;
+}
+
+/* Override "Learn more" link color in ModelListView */
+a[data-component-id="codegen_mlflow_app_src_model-registry_components_modellistview.tsx_244"],
+.dark-mode a[data-component-id="codegen_mlflow_app_src_model-registry_components_modellistview.tsx_244"] {
+  color: var(--brand-grey-40) !important;
+}
+
+/* ========================================
+   ERROR MESSAGE TEXT COLOR OVERRIDE
+   ======================================== */
+
+/* Override error message text color to white in dark theme */
+.dark-mode .ant-empty-description,
+.dark-mode [class*="Empty"] [class*="description"],
+.dark-mode [data-testid*="error"] {
+  color: var(--white) !important;
+}
+
+/* Target specific error text elements */
+.dark-mode .ant-empty-description,
+.dark-mode .ant-empty-description *,
+.dark-mode [class*="error"] {
+  color: var(--white) !important;
+}
+
+/* ========================================
+   SIDEBAR MENU ITEM COLOR OVERRIDES
+   ======================================== */
+
+/* Override sidebar menu item colors for consistent styling */
+.dark-mode nav ul li a,
+.dark-mode nav ul li a * {
+  color: var(--white) !important;
+}
+
+/* Override active sidebar menu item colors to use Fabrion red */
+.dark-mode nav ul li a[aria-current="page"],
+.dark-mode nav ul li a[aria-current="page"] * {
+  color: var(--brand-red) !important;
+}
+
+/* Override hover state for sidebar menu items */
+.dark-mode nav ul li a:hover,
+.dark-mode nav ul li a:hover * {
+  color: var(--brand-red-50) !important;
+}
+
+/* Light theme overrides for sidebar menu items */
+nav ul li a,
+nav ul li a * {
+  color: var(--brand-grey) !important;
+}
+
+nav ul li a[aria-current="page"],
+nav ul li a[aria-current="page"] * {
+  color: var(--brand-red) !important;
+}
+
+nav ul li a:hover,
+nav ul li a:hover * {
+  color: var(--brand-red-50) !important;
+}
+
+/* ========================================
+   DARK THEME SWITCH ICON COLOR OVERRIDE
+   ======================================== */
+
+/* Override dark theme switch (moon icon) color in dark theme */
+.dark-mode button[data-component-id="codegen_mlflow_app_src_common_components_darkthemeswitch.tsx_32"],
+.dark-mode button[data-component-id="codegen_mlflow_app_src_common_components_darkthemeswitch.tsx_32"] svg,
+.dark-mode button[data-component-id="codegen_mlflow_app_src_common_components_darkthemeswitch.tsx_32"] path {
+  color: var(--brand-grey-40) !important;
+  fill: var(--brand-grey-40) !important;
+}
+
+/* Override hover state for dark theme switch */
+.dark-mode button[data-component-id="codegen_mlflow_app_src_common_components_darkthemeswitch.tsx_32"]:hover,
+.dark-mode button[data-component-id="codegen_mlflow_app_src_common_components_darkthemeswitch.tsx_32"]:hover svg,
+.dark-mode button[data-component-id="codegen_mlflow_app_src_common_components_darkthemeswitch.tsx_32"]:hover path {
+  color: var(--brand-grey-40) !important;
+  fill: var(--brand-grey-40) !important;
+}
+
+/* Target the ToggleIconButton class for dark theme switch */
+.dark-mode button[class*="ToggleIconButton"],
+.dark-mode button[class*="ToggleIconButton"] svg,
+.dark-mode button[class*="ToggleIconButton"] path {
+  color: var(--brand-grey-40) !important;
+  fill: var(--brand-grey-40) !important;
+}
+
+/* Target any button with moon icon in dark theme */
+.dark-mode button svg[viewBox="0 0 384 512"],
+.dark-mode button svg[viewBox="0 0 384 512"] path {
+  color: var(--brand-grey-40) !important;
+  fill: var(--brand-grey-40) !important;
+}
+
+/* ========================================
+   MODAL BACKGROUND OVERRIDES
+   ======================================== */
+
+/* Override modal content background in dark theme */
+.dark-mode .du-bois-dark-modal-content {
+  background-color: var(--brand-grey) !important;
+}
+
+/* Remove background gradient from modal body in dark theme */
+.dark-mode .du-bois-dark-modal-body {
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+.bg-brand-red { background-color: var(--brand-red); }
+.bg-brand-red-50 { background-color: var(--brand-red-50); }
+.bg-brand-red-20 { background-color: var(--brand-red-20); }
+
+.text-brand-grey { color: var(--brand-grey); }
+.text-brand-grey-70 { color: var(--brand-grey-70); }
+.text-brand-grey-40 { color: var(--brand-grey-40); }
+
+.text-brand-red { color: var(--brand-red); }
+.text-brand-red-50 { color: var(--brand-red-50); }
+.text-brand-red-20 { color: var(--brand-red-20); }
+
+.border-brand-grey { border-color: var(--brand-grey); }
+.border-brand-grey-70 { border-color: var(--brand-grey-70); }
+.border-brand-grey-40 { border-color: var(--brand-grey-40); }
+
+.border-brand-red { border-color: var(--brand-red); }
+.border-brand-red-50 { border-color: var(--brand-red-50); }
+.border-brand-red-20 { border-color: var(--brand-red-20); }

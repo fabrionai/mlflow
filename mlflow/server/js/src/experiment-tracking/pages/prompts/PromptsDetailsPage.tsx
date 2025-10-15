@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { usePromptDetailsQuery } from './hooks/usePromptDetailsQuery';
 import { Link, useNavigate, useParams } from '../../../common/utils/RoutingUtils';
 import { ScrollablePageWrapper } from '../../../common/components/ScrollablePageWrapper';
+import '../../../common/styles/company-colors.css';
 import {
   Breadcrumb,
   Button,
@@ -48,7 +49,7 @@ const getAliasesModalTitle = (version: string) => (
   />
 );
 
-const PromptsDetailsPage = () => {
+const PromptsDetailsPage = ({ isDarkTheme }: { isDarkTheme?: boolean }) => {
   const { promptName } = useParams<{ promptName: string }>();
   const { theme } = useDesignSystemTheme();
   const navigate = useNavigate();
@@ -153,14 +154,21 @@ const PromptsDetailsPage = () => {
 
   if (isLoading) {
     return (
-      <ScrollablePageWrapper>
+      <ScrollablePageWrapper css={{ 
+        backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
+      }}>
         <PromptsDetailsPage.Skeleton breadcrumbs={breadcrumbs} />
       </ScrollablePageWrapper>
     );
   }
 
   return (
-    <ScrollablePageWrapper css={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <ScrollablePageWrapper css={{ 
+      overflow: 'hidden', 
+      display: 'flex', 
+      flexDirection: 'column',
+      backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
+    }}>
       <Spacer shrinks={false} />
       <Header
         breadcrumbs={breadcrumbs}

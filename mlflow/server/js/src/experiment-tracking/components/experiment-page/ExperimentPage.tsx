@@ -34,7 +34,7 @@ const ExperimentPage = () => {
 
   useEffect(() => {
     const pageTitle = formatMessage({
-      defaultMessage: 'Experiment Runs - Databricks',
+      defaultMessage: 'Experiment Runs - Fabrion Mlflow',
       description: 'Title on a page used to manage MLflow experiments runs',
     });
     Utils.updatePageTitle(pageTitle);

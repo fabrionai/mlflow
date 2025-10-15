@@ -8,6 +8,7 @@ import {
   TextBoxIcon,
   useDesignSystemTheme,
 } from '@databricks/design-system';
+import '../styles/company-colors.css';
 import type { Location } from '../utils/RoutingUtils';
 import { Link, matchPath, useLocation, useNavigate } from '../utils/RoutingUtils';
 import ExperimentTrackingRoutes from '../../experiment-tracking/routes';
@@ -30,7 +31,7 @@ const isExperimentsActive = (location: Location) =>
 const isModelsActive = (location: Location) => matchPath('/models/*', location.pathname);
 const isPromptsActive = (location: Location) => matchPath('/prompts/*', location.pathname);
 
-export function MlflowSidebar() {
+export function MlflowSidebar({ isDarkTheme = false }: { isDarkTheme?: boolean }) {
   const location = useLocation();
   const { theme } = useDesignSystemTheme();
   const invalidateExperimentList = useInvalidateExperimentList();
@@ -121,11 +122,30 @@ export function MlflowSidebar() {
         display: 'inline-flex',
         flexDirection: 'column',
         gap: theme.spacing.md,
+        backgroundColor: isDarkTheme ? 'var(--brand-black)' : theme.colors.backgroundSecondary,
       }}
     >
       <DropdownMenu.Root modal={false}>
         <DropdownMenu.Trigger asChild>
-          <Button componentId="mlflow_sidebar.new_button" icon={<PlusIcon />}>
+          <Button 
+            componentId="mlflow_sidebar.new_button" 
+            icon={<PlusIcon />}
+            css={{
+              backgroundColor: 'var(--brand-red) !important',
+              borderColor: 'var(--brand-red) !important',
+              color: 'var(--white) !important',
+              '&:hover': {
+                backgroundColor: 'var(--brand-red-50) !important',
+                borderColor: 'var(--brand-red-50) !important',
+                color: 'var(--white) !important',
+              },
+              '&:active': {
+                backgroundColor: 'var(--brand-red) !important',
+                borderColor: 'var(--brand-red) !important',
+                color: 'var(--white) !important',
+              },
+            }}
+          >
             <FormattedMessage
               defaultMessage="New"
               description="Sidebar create popover button to create new experiment, model or prompt"

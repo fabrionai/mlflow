@@ -1,6 +1,7 @@
 import { ScrollablePageWrapper } from '@mlflow/mlflow/src/common/components/ScrollablePageWrapper';
+import '../../../common/styles/company-colors.css';
 import { usePromptsListQuery } from './hooks/usePromptsListQuery';
-import { Alert, Button, Header, Spacer } from '@databricks/design-system';
+import { Alert, Button, Header, Spacer, useDesignSystemTheme } from '@databricks/design-system';
 import { FormattedMessage } from 'react-intl';
 import { useState } from 'react';
 import { PromptsListFilters } from './components/PromptsListFilters';
@@ -14,9 +15,10 @@ import ErrorUtils from '../../../common/utils/ErrorUtils';
 import { PromptPageErrorHandler } from './components/PromptPageErrorHandler';
 import { useDebounce } from 'use-debounce';
 
-const PromptsPage = () => {
+const PromptsPage = ({ isDarkTheme }: { isDarkTheme?: boolean }) => {
   const [searchFilter, setSearchFilter] = useState('');
   const navigate = useNavigate();
+  const { theme } = useDesignSystemTheme();
 
   const [debouncedSearchFilter] = useDebounce(searchFilter, 500);
 
@@ -30,7 +32,12 @@ const PromptsPage = () => {
   });
 
   return (
-    <ScrollablePageWrapper css={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <ScrollablePageWrapper css={{ 
+      overflow: 'hidden', 
+      display: 'flex', 
+      flexDirection: 'column',
+      backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
+    }}>
       <Spacer shrinks={false} />
       <Header
         title={<FormattedMessage defaultMessage="Prompts" description="Header title for the registered prompts page" />}

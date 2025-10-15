@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header, useDesignSystemTheme } from '@databricks/design-system';
 import { FormattedMessage } from 'react-intl';
 import { ScrollablePageWrapper } from '../common/components/ScrollablePageWrapper';
+import '../common/styles/company-colors.css';
 import { useQuery } from '@mlflow/mlflow/src/common/utils/reactQueryHooks';
 import { MlflowService } from '../experiment-tracking/sdk/MlflowService';
 import type { SearchExperimentsApiResponse } from '../experiment-tracking/types';
@@ -17,7 +18,7 @@ type ExperimentQueryKey = ['home', 'recent-experiments'];
 
 const RECENT_EXPERIMENTS_QUERY_KEY: ExperimentQueryKey = ['home', 'recent-experiments'];
 
-const HomePageContent = () => {
+const HomePageContent = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => {
   const { theme } = useDesignSystemTheme();
   const invalidateExperiments = useInvalidateExperimentList();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -54,18 +55,20 @@ const HomePageContent = () => {
         flexDirection: 'column',
         gap: theme.spacing.lg,
         height: 'min-content',
+        backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
       }}
     >
       <Header title={<FormattedMessage defaultMessage="Welcome to MLflow" description="Home page hero title" />} />
-      <GetStarted />
+      <GetStarted isDarkTheme={isDarkTheme} />
       <ExperimentsHomeView
         experiments={experiments}
         isLoading={isLoading}
         error={error}
         onCreateExperiment={handleOpenCreateModal}
         onRetry={refetch}
+        isDarkTheme={isDarkTheme}
       />
-      <DiscoverNews />
+      <DiscoverNews isDarkTheme={isDarkTheme} />
 
       <CreateExperimentModal
         isOpen={isCreateModalOpen}
@@ -77,9 +80,9 @@ const HomePageContent = () => {
   );
 };
 
-const HomePage = () => (
+const HomePage = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => (
   <HomePageViewStateProvider>
-    <HomePageContent />
+    <HomePageContent isDarkTheme={isDarkTheme} />
   </HomePageViewStateProvider>
 );
 

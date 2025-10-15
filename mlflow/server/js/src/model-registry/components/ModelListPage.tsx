@@ -23,10 +23,12 @@ import type { WithRouterNextProps } from '../../common/utils/withRouterNext';
 import { createMLflowRoutePath } from '../../common/utils/RoutingUtils';
 import { ErrorWrapper } from '../../common/utils/ErrorWrapper';
 import { ScrollablePageWrapper } from '../../common/components/ScrollablePageWrapper';
+import '../../common/styles/company-colors.css';
 
 type ModelListPageImplProps = WithRouterNextProps & {
   models?: any[];
   searchRegisteredModelsApi: (...args: any[]) => any;
+  isDarkTheme?: boolean;
 };
 
 type ModelListPageImplState = {
@@ -299,9 +301,11 @@ export class ModelListPageImpl extends React.Component<ModelListPageImplProps, M
       searchInput,
       // eslint-disable-nextline
     } = this.state;
-    const { models } = this.props;
+    const { models, isDarkTheme } = this.props;
     return (
-      <ScrollablePageWrapper>
+      <ScrollablePageWrapper css={{ 
+        backgroundColor: isDarkTheme ? 'var(--brand-grey) !important' : undefined,
+      }}>
         <ModelListView
           // @ts-expect-error TS(2322): Type '{ models: any[] | undefined; loading: any; e... Remove this comment to see the full error message
           models={models}
@@ -318,6 +322,7 @@ export class ModelListPageImpl extends React.Component<ModelListPageImplProps, M
           onClickSortableColumn={this.handleClickSortableColumn}
           onSetMaxResult={this.handleMaxResultsChange}
           maxResultValue={this.getMaxResultsSelection()}
+          isDarkTheme={isDarkTheme}
         />
       </ScrollablePageWrapper>
     );

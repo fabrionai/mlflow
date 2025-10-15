@@ -6,6 +6,7 @@ import { ExperimentListTable } from '../../experiment-tracking/components/Experi
 import Routes from '../../experiment-tracking/routes';
 import { Link } from '../../common/utils/RoutingUtils';
 import type { ExperimentEntity } from '../../experiment-tracking/types';
+import '../../common/styles/company-colors.css';
 
 type ExperimentsHomeViewProps = {
   experiments?: ExperimentEntity[];
@@ -13,6 +14,7 @@ type ExperimentsHomeViewProps = {
   error?: Error | null;
   onCreateExperiment: () => void;
   onRetry: () => void;
+  isDarkTheme?: boolean;
 };
 
 const ExperimentsEmptyState = ({ onCreateExperiment }: { onCreateExperiment: () => void }) => {
@@ -53,6 +55,7 @@ export const ExperimentsHomeView = ({
   error,
   onCreateExperiment,
   onRetry,
+  isDarkTheme = false,
 }: ExperimentsHomeViewProps) => {
   const { theme } = useDesignSystemTheme();
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
@@ -82,7 +85,7 @@ export const ExperimentsHomeView = ({
         css={{
           border: `1px solid ${theme.colors.border}`,
           overflow: 'hidden',
-          backgroundColor: theme.colors.backgroundPrimary,
+          backgroundColor: isDarkTheme ? 'var(--brand-grey-70)' : theme.colors.backgroundPrimary,
         }}
       >
         {error ? (

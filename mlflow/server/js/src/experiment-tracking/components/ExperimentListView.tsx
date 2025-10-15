@@ -12,6 +12,7 @@ import {
   FilterIcon,
   ChevronDownIcon,
 } from '@databricks/design-system';
+import '../../common/styles/company-colors.css';
 import 'react-virtualized/styles.css';
 import Routes from '../routes';
 import { CreateExperimentModal } from './modals/CreateExperimentModal';
@@ -28,7 +29,7 @@ import { useSearchFilter } from './experiment-page/hooks/useSearchFilter';
 import { TagFilter, useTagsFilter } from './experiment-page/hooks/useTagsFilter';
 import { ExperimentListViewTagsFilter } from './experiment-page/components/ExperimentListViewTagsFilter';
 
-export const ExperimentListView = () => {
+export const ExperimentListView = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => {
   const [searchFilter, setSearchFilter] = useSearchFilter();
   const { tagsFilter, setTagsFilter, isTagsFilterOpen, setIsTagsFilterOpen } = useTagsFilter();
 
@@ -89,7 +90,12 @@ export const ExperimentListView = () => {
   };
 
   return (
-    <ScrollablePageWrapper css={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <ScrollablePageWrapper css={{ 
+      overflow: 'hidden', 
+      display: 'flex', 
+      flexDirection: 'column',
+      backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
+    }}>
       <Spacer shrinks={false} />
       <Header
         title={<FormattedMessage defaultMessage="Experiments" description="Header title for the experiments page" />}
@@ -100,6 +106,21 @@ export const ExperimentListView = () => {
               type="primary"
               onClick={handleCreateExperiment}
               data-testid="create-experiment-button"
+              css={{
+                backgroundColor: 'var(--brand-red) !important',
+                borderColor: 'var(--brand-red) !important',
+                color: 'var(--white) !important',
+                '&:hover': {
+                  backgroundColor: 'var(--brand-red-50) !important',
+                  borderColor: 'var(--brand-red-50) !important',
+                  color: 'var(--white) !important',
+                },
+                '&:active': {
+                  backgroundColor: 'var(--brand-red) !important',
+                  borderColor: 'var(--brand-red) !important',
+                  color: 'var(--white) !important',
+                },
+              }}
             >
               <FormattedMessage
                 defaultMessage="Create"

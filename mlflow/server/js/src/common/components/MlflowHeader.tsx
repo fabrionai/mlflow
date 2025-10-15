@@ -4,6 +4,7 @@ import { HomePageDocsUrl, Version } from '../constants';
 import { DarkThemeSwitch } from '@mlflow/mlflow/src/common/components/DarkThemeSwitch';
 import { Button, MenuIcon, useDesignSystemTheme } from '@databricks/design-system';
 import { MlflowLogo } from './MlflowLogo';
+import '../styles/company-colors.css';
 
 export const MlflowHeader = ({
   isDarkTheme = false,
@@ -20,7 +21,7 @@ export const MlflowHeader = ({
   return (
     <header
       css={{
-        backgroundColor: theme.colors.backgroundSecondary,
+        backgroundColor: isDarkTheme ? 'var(--brand-black)' : theme.colors.backgroundSecondary,
         color: theme.colors.textSecondary,
         display: 'flex',
         paddingLeft: theme.spacing.sm,
@@ -45,7 +46,25 @@ export const MlflowHeader = ({
           onClick={toggleSidebar}
           aria-label="Toggle sidebar"
           aria-pressed={sidebarOpen}
-          icon={<MenuIcon />}
+          icon={<MenuIcon css={{ color: 'var(--brand-red) !important' }} />}
+          css={{
+            color: 'var(--brand-red) !important',
+            '& svg': {
+              color: 'var(--brand-red) !important',
+            },
+            '&:hover': {
+              color: 'var(--brand-red-50) !important',
+              '& svg': {
+                color: 'var(--brand-red-50) !important',
+              },
+            },
+            '&:active': {
+              color: 'var(--brand-red) !important',
+              '& svg': {
+                color: 'var(--brand-red) !important',
+              },
+            },
+          }}
         />
         <Link to={ExperimentTrackingRoutes.rootRoute}>
           <MlflowLogo
@@ -56,19 +75,19 @@ export const MlflowHeader = ({
             }}
           />
         </Link>
-        <span
+        {/* <span
           css={{
             fontSize: theme.typography.fontSizeSm,
           }}
         >
           {Version}
-        </span>
+        </span> */}
       </div>
       <div css={{ flex: 1 }} />
       <div css={{ display: 'flex', gap: theme.spacing.lg, alignItems: 'center' }}>
         <DarkThemeSwitch isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
-        <a href="https://github.com/mlflow/mlflow">GitHub</a>
-        <a href={HomePageDocsUrl}>Docs</a>
+        {/* <a href="https://github.com/mlflow/mlflow">GitHub</a> */}
+        {/* <a href={HomePageDocsUrl}>Docs</a> */}
       </div>
     </header>
   );

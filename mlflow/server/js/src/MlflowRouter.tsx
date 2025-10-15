@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { LegacySkeleton, useDesignSystemTheme } from '@databricks/design-system';
+import './common/styles/company-colors.css';
 
 import ErrorModal from './experiment-tracking/components/modals/ErrorModal';
 import AppErrorBoundary from './common/components/error-boundaries/AppErrorBoundary';
@@ -62,20 +63,21 @@ const MlflowRootRoute = ({
         />
         <div
           css={{
-            backgroundColor: theme.colors.backgroundSecondary,
+            backgroundColor: isDarkTheme ? 'var(--brand-black)' : theme.colors.backgroundSecondary,
             display: 'flex',
             flexDirection: 'row',
             flexGrow: 1,
             minHeight: 0,
           }}
         >
-          {showSidebar && <MlflowSidebar />}
+          {showSidebar && <MlflowSidebar isDarkTheme={isDarkTheme} />}
           <main
             css={{
               width: '100%',
-              backgroundColor: theme.colors.backgroundPrimary,
+              backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
               margin: theme.spacing.sm,
               borderRadius: theme.borders.borderRadiusMd,
+              border: isDarkTheme ? `1px solid var(--brand-grey-40)` : 'none',
               boxShadow: theme.shadows.md,
               overflowX: 'auto',
             }}
@@ -86,7 +88,11 @@ const MlflowRootRoute = ({
               ) : (
                 <Routes>
                   {routes?.map(({ element, pageId, path }) => (
-                    <Route key={pageId} path={path} element={element} />
+                    <Route 
+                      key={pageId} 
+                      path={path} 
+                      element={React.cloneElement(element, { isDarkTheme })} 
+                    />
                   ))}
                 </Routes>
               )}

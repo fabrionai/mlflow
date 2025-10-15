@@ -24,6 +24,7 @@ import { shouldShowModelsNextUI } from '../../common/utils/FeatureUtils';
 import { ModelListFilters } from './model-list/ModelListFilters';
 import { ModelListTable } from './model-list/ModelListTable';
 import { PageContainer } from '../../common/components/PageContainer';
+import '../../common/styles/company-colors.css';
 import { ModelsNextUIToggleSwitch } from './ModelsNextUIToggleSwitch';
 import { withNextModelsUIContext } from '../hooks/useNextModelsUI';
 
@@ -52,6 +53,7 @@ type ModelListViewImplProps = {
   onSetMaxResult: (...args: any[]) => any;
   maxResultValue: number;
   intl: IntlShape;
+  isDarkTheme?: boolean;
 };
 
 type ModelListViewImplState = any;
@@ -161,7 +163,17 @@ export class ModelListViewImpl extends React.Component<ModelListViewImplProps, M
       />
     );
     return (
-      <PageContainer data-testid="ModelListView-container" usesFullHeight>
+      <div css={{
+        backgroundColor: this.props.isDarkTheme ? 'var(--brand-grey) !important' : undefined,
+        height: '100%',
+        '& *': {
+          backgroundColor: this.props.isDarkTheme ? 'var(--brand-grey) !important' : undefined,
+        },
+      }}>
+        <PageContainer 
+          data-testid="ModelListView-container" 
+          usesFullHeight
+        >
         <div>
           <PageHeader title={title} spacerSize="xs">
             <CreateModelButton />
@@ -224,7 +236,8 @@ export class ModelListViewImpl extends React.Component<ModelListViewImplProps, M
           }
           isFiltered={isFiltered}
         />
-      </PageContainer>
+        </PageContainer>
+      </div>
     );
   }
 }

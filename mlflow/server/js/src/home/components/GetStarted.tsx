@@ -2,10 +2,11 @@ import { Typography, useDesignSystemTheme } from '@databricks/design-system';
 import { FormattedMessage } from 'react-intl';
 import { homeQuickActions } from '../quick-actions';
 import { useHomePageViewState } from '../HomePageViewStateContext';
+import '../../common/styles/company-colors.css';
 
 type QuickAction = typeof homeQuickActions[number];
 
-const GetStartedCard = ({ action }: { action: QuickAction }) => {
+const GetStartedCard = ({ action, isDarkTheme = false }: { action: QuickAction; isDarkTheme?: boolean }) => {
   const { theme } = useDesignSystemTheme();
   const linkStyles = {
     textDecoration: 'none',
@@ -16,7 +17,7 @@ const GetStartedCard = ({ action }: { action: QuickAction }) => {
     overflow: 'hidden',
     border: `1px solid ${theme.colors.actionDefaultBorderDefault}`,
     borderRadius: theme.borders.borderRadiusMd,
-    background: theme.colors.backgroundPrimary,
+    background: isDarkTheme ? 'var(--brand-grey-70)' : theme.colors.backgroundPrimary,
     padding: theme.spacing.sm + theme.spacing.xs,
     display: 'flex',
     gap: theme.spacing.sm,
@@ -27,10 +28,10 @@ const GetStartedCard = ({ action }: { action: QuickAction }) => {
     cursor: 'pointer',
     transition: 'background 150ms ease',
     '&:hover': {
-      background: theme.colors.actionDefaultBackgroundHover,
+      background: isDarkTheme ? 'var(--brand-grey)' : theme.colors.actionDefaultBackgroundHover,
     },
     '&:active': {
-      background: theme.colors.actionDefaultBackgroundPress,
+      background: isDarkTheme ? 'var(--brand-grey-70)' : theme.colors.actionDefaultBackgroundPress,
     },
   };
   const contentStyles = {
@@ -43,7 +44,7 @@ const GetStartedCard = ({ action }: { action: QuickAction }) => {
     borderRadius: theme.borders.borderRadiusSm,
     background: theme.colors.actionDefaultBackgroundHover,
     padding: theme.spacing.xs,
-    color: theme.colors.blue500,
+    color: 'var(--brand-red)',
     height: 'min-content',
     display: 'flex',
     alignItems: 'center',
@@ -93,7 +94,7 @@ const GetStartedCard = ({ action }: { action: QuickAction }) => {
   );
 };
 
-export const GetStarted = () => {
+export const GetStarted = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => {
   const { theme } = useDesignSystemTheme();
 
   return (
@@ -112,7 +113,7 @@ export const GetStarted = () => {
         }}
       >
         {homeQuickActions.map((action) => (
-          <GetStartedCard key={action.id} action={action} />
+          <GetStartedCard key={action.id} action={action} isDarkTheme={isDarkTheme} />
         ))}
       </section>
     </section>

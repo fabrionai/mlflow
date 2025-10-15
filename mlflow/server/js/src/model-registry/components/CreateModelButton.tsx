@@ -3,6 +3,7 @@ import type { ButtonProps } from '@databricks/design-system';
 import { Button } from '@databricks/design-system';
 import { CreateModelModal } from './CreateModelModal';
 import { FormattedMessage } from 'react-intl';
+import '../../common/styles/company-colors.css';
 
 type Props = {
   buttonType?: ButtonProps['type'];
@@ -46,7 +47,30 @@ const styles = {
       ? {
           height: '40px',
           width: 'fit-content',
+          backgroundColor: 'var(--brand-red) !important',
+          borderColor: 'var(--brand-red) !important',
+          color: 'var(--white) !important',
+          '&:hover': {
+            backgroundColor: 'var(--brand-red-50) !important',
+            borderColor: 'var(--brand-red-50) !important',
+            color: 'var(--white) !important',
+          },
+          '&:active': {
+            backgroundColor: 'var(--brand-red) !important',
+            borderColor: 'var(--brand-red) !important',
+            color: 'var(--white) !important',
+          },
         }
-      : { padding: '0px' },
+      : { 
+          padding: '0px',
+          backgroundColor: 'transparent !important',
+          borderColor: 'var(--brand-grey-40) !important',
+          color: 'var(--brand-grey) !important',
+          '&:hover': {
+            backgroundColor: 'var(--brand-grey-40) !important',
+            borderColor: 'var(--brand-red) !important',
+            color: 'var(--brand-red) !important',
+          },
+        },
   wrapper: { display: 'inline' },
 };
