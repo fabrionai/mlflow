@@ -128,3 +128,11 @@ export const shouldUseUnifiedArtifactBrowserForRunDetailsPage = () => {
 export const shouldEnableTagGrouping = () => {
   return true;
 };
+
+/**
+ * Determines if the Discover News section on the home page is enabled
+ */
+export const shouldEnableDiscoverNews = () => {
+  return false; // Set to false to disable the "Discover new features" section
+};
+

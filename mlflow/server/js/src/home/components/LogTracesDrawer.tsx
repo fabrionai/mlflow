@@ -130,6 +130,10 @@ export const LogTracesDrawer = () => {
       <Drawer.Content
         componentId="mlflow.home.log_traces.drawer"
         width="70vw"
+        css={{
+          backgroundColor: theme.isDarkMode ? 'var(--brand-grey)' : 'white',
+          background: theme.isDarkMode ? 'var(--brand-grey) !important' : 'white !important',
+        }}
         title={
           <span
             css={{
@@ -143,7 +147,7 @@ export const LogTracesDrawer = () => {
                 borderRadius: theme.borders.borderRadiusSm,
                 background: theme.colors.actionDefaultBackgroundHover,
                 padding: theme.spacing.xs,
-                color: theme.colors.blue500,
+                color: 'var(--brand-red)',
                 height: 'min-content',
                 display: 'flex',
                 alignItems: 'center',
@@ -181,6 +185,9 @@ export const LogTracesDrawer = () => {
               gap: theme.spacing.sm,
               minWidth: 220,
               maxWidth: 260,
+              backgroundColor: theme.isDarkMode ? 'var(--brand-grey-70)' : 'white',
+              padding: theme.isDarkMode ? theme.spacing.md : theme.spacing.md,
+              borderRadius: theme.borders.borderRadiusLg,
             }}
           >
             {frameworks.map((framework) => {
@@ -200,20 +207,20 @@ export const LogTracesDrawer = () => {
                     textAlign: 'left' as const,
                     cursor: 'pointer',
                     backgroundColor: isSelected
-                      ? theme.colors.actionPrimaryBackgroundDefault
+                      ? 'var(--brand-red)'
                       : theme.colors.backgroundSecondary,
-                    color: isSelected ? theme.colors.actionPrimaryTextDefault : theme.colors.textPrimary,
+                    color: isSelected ? 'var(--white)' : theme.colors.textPrimary,
                     transition: 'background 150ms ease',
                     display: 'flex',
                     alignItems: 'center',
                     gap: theme.spacing.sm,
                     '&:hover': {
                       backgroundColor: isSelected
-                        ? theme.colors.actionPrimaryBackgroundHover
+                        ? 'var(--brand-red-50)'
                         : theme.colors.actionDefaultBackgroundHover,
                     },
                     '&:focus-visible': {
-                      outline: `2px solid ${theme.colors.actionPrimaryBackgroundHover}`,
+                      outline: `2px solid var(--brand-red)`,
                       outlineOffset: 2,
                     },
                   }}
@@ -255,7 +262,7 @@ export const LogTracesDrawer = () => {
               border: `1px solid ${theme.colors.border}`,
               borderRadius: theme.borders.borderRadiusLg,
               padding: theme.spacing.lg,
-              backgroundColor: theme.colors.backgroundPrimary,
+              backgroundColor: theme.isDarkMode ? 'var(--brand-grey-70)' : 'white',
               boxShadow: theme.shadows.xs,
             }}
           >

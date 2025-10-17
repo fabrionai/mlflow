@@ -553,3 +553,13 @@ nav ul li a:hover * {
 .border-brand-red { border-color: var(--brand-red); }
 .border-brand-red-50 { border-color: var(--brand-red-50); }
 .border-brand-red-20 { border-color: var(--brand-red-20); }
+
+/* Override any linear-gradient backgrounds in LogTracesDrawer with solid fabrionGrey */
+[data-component-id="mlflow.home.log_traces.drawer"] {
+  background: var(--brand-grey) !important;
+  background-image: none !important;
+}
+
+[data-component-id="mlflow.home.log_traces.drawer"] * {
+  background-image: none !important;
+}

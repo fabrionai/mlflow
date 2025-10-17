@@ -90,6 +90,11 @@ const DiscoverNewsCard = ({ title, description, link, thumbnail, isDarkTheme = f
 export const DiscoverNews = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => {
   const { theme } = useDesignSystemTheme();
 
+  // Don't render if there are no news items
+  if (homeNewsItems.length === 0) {
+    return null;
+  }
+
   return (
     <section css={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.md }}>
       <div

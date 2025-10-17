@@ -13,6 +13,7 @@ import { ExperimentsHomeView } from './components/ExperimentsHomeView';
 import { DiscoverNews } from './components/DiscoverNews';
 import { LogTracesDrawer } from './components/LogTracesDrawer';
 import { HomePageViewStateProvider } from './HomePageViewStateContext';
+import { shouldEnableDiscoverNews } from '../common/utils/FeatureUtils';
 
 type ExperimentQueryKey = ['home', 'recent-experiments'];
 
@@ -58,7 +59,7 @@ const HomePageContent = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => 
         backgroundColor: isDarkTheme ? 'var(--brand-grey)' : theme.colors.backgroundPrimary,
       }}
     >
-      <Header title={<FormattedMessage defaultMessage="Welcome to MLflow" description="Home page hero title" />} />
+      <Header title={<FormattedMessage defaultMessage="Welcome to Fabrion MLflow" description="Home page hero title" />} />
       <GetStarted isDarkTheme={isDarkTheme} />
       <ExperimentsHomeView
         experiments={experiments}
@@ -68,7 +69,7 @@ const HomePageContent = ({ isDarkTheme = false }: { isDarkTheme?: boolean }) => 
         onRetry={refetch}
         isDarkTheme={isDarkTheme}
       />
-      <DiscoverNews isDarkTheme={isDarkTheme} />
+      {shouldEnableDiscoverNews() && <DiscoverNews isDarkTheme={isDarkTheme} />}
 
       <CreateExperimentModal
         isOpen={isCreateModalOpen}
